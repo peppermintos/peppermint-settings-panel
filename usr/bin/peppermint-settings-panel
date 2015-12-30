@@ -1,0 +1,5 @@
+#!/bin/sh
+cd /usr/share/peppermint-settings-panel
+/usr/share/peppermint-settings-panel/peppermint_sp.py
+
+exit 0

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Peppermint Settings Panel
+Comment=Manage your system settings
+Exec=peppermint-settings-panel
+Icon=/usr/share/pixmaps/peppermint-settings-panel.png
+Type=Application
+Encoding=UTF-8
+Categories=Application;Settings

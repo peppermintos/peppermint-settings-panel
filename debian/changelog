@@ -1,0 +1,29 @@
+peppermint-settings-panel (0.0.4) trusty; urgency=low
+
+  * Fix missing /usr/bin/peppermint-settings-panel script
+
+ -- Mark Greaves (PCNetSpec) <mark@pcnetspec.co.uk>  Thu, 29 Oct 2015 13:25:00 +0000
+
+peppermint-settings-panel (0.0.3) trusty; urgency=low
+
+  * Add "install" file to copy peppermint-settings-panel script to /usr/bin
+
+ -- Mark Greaves (PCNetSpec) <mark@pcnetspec.co.uk>  Thu, 29 Oct 2015 13:05:00 +0000
+
+peppermint-settings-panel (0.0.3) trusty; urgency=low
+
+  * Fix control file
+
+ -- Mark Greaves (PCNetSpec) <mark@pcnetspec.co.uk>  Thu, 29 Oct 2015 12:27:00 +0000
+
+peppermint-settings-panel (0.0.2) trusty; urgency=low
+
+  * Fix Rules
+
+ -- Mark Greaves (PCNetSpec) <mark@pcnetspec.co.uk>  Thu, 29 Oct 2015 12:05:00 +0000
+
+peppermint-settings-panel (0.0.1) trusty; urgency=low
+
+  * First build of peppermint-settings-panel
+
+ -- Mark Greaves (PCNetSpec) <mark@pcnetspec.co.uk>  Thu, 29 Oct 2015 12:00:00 +0000

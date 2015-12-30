@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+  <peppermint_sp icon="gnome-control-center" title="Peppermint Settings Panel">
+   <category icon="user-online" title="Personal">
+    <tool action="lxappearance" icon="preferences-desktop-theme" label="Customize Look and Feel"/>
+    <tool action="xfce4-panel -p" icon="xfce4-panel" label="Panel Preferences"/>
+    <tool action="peppermint-control-center" icon="peppermint" label="Peppermint Control Center"/>
+    <tool action="nitrogen" icon="background" label="Wallpapers"/>
+    <tool action="gnome-language-selector -n" icon="config-language" label="Language Support"/>
+   </category>
+   <category icon="preferences-system" title="Hardware">
+    <tool action="system-config-printer" icon="printer" label="Printers"/>
+    <tool action="pavucontrol" icon="preferences-desktop-multimedia" label="Sound"/>
+    <tool action="lxrandr" icon="display" label="Monitor"/>
+    <tool action="/usr/bin/software-properties-gtk --open-tab=4" icon="jockey" label="Additional Drivers"/>
+    <tool action="xfce4-power-manager-settings" icon="xfpm-ac-adapter" label="Power Manager"/>
+   </category>
+   <category icon="network-wired" title="Network">
+    <tool action="nm-connection-editor" icon="preferences-system-network" label="Network Manager"/>
+    <tool action="gksu system-config-samba" icon="network-wired" label="Samba Shares"/>
+    <tool action="blueman-manager" icon="blueman" label="Bluetooth Manager"/>
+    <tool action="gufw" icon="gufw" label="Firewall"/>
+   </category>
+   <category icon="gdm" title="System">
+    <tool action="users-admin" icon="config-users" label="Users and Groups"/>
+    <tool action="time-admin" icon="time-admin" label="Time and Date"/>
+    <tool action="lxsession-default-apps" icon="xfwm4" label="Default Applications"/>
+    <tool action="mintupdate" icon="update-manager" label="Update Manager"/>
+    <tool action="gnome-disks" icon="gnome-disks" label="Disks Utility"/>
+   </category>
+  </peppermint_sp>

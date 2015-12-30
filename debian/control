@@ -1,0 +1,12 @@
+Source: peppermint-settings-panel
+Section: admin
+Priority: optional
+Maintainer: Mark Greaves (PCNetSpec) <mark@pcnetspec.co.uk>
+Build-Depends: debhelper (>= 5.0.0)
+Standards-Version: 3.9.5
+
+Package: peppermint-settings-panel
+Architecture: all
+Depends: python (>= 2.4), python3
+Description: Peppermint Settings Panel Manager
+ GUI utility for managing Peppermint system settings.
