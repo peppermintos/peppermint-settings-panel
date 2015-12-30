@@ -4,9 +4,10 @@ import gtk
 import os
 import textwrap
 import gobject
-       
+
+
 # For debug
-def get_icon_info(icon_name, size = 48):
+def get_icon_info(icon_name, size=48):
     icon_theme = gtk.icon_theme_get_default()
     try:
         flags = 0
@@ -15,9 +16,10 @@ def get_icon_info(icon_name, size = 48):
         sz = icon_info.get_base_size()
         fname = icon_info.get_filename()
         print "get_icon_info: icon_name: " + icon_name + " Filename: " + fname + " base size: %d" % sz
-    except gobject.GError, exc:
-        print "get_icon_info: icon_name: " + icon_name + " not present in theme " #, exc
+    except gobject.GError:
+        print "get_icon_info: icon_name: " + icon_name + " not present in theme "
         pass
+
 
 # Return a pixbuf from icon name
 def get_icon(name, size):
@@ -32,7 +34,7 @@ def get_icon(name, size):
         except:
             # print "get_icon: Cannot get pixbuf from file: " + name
             name = os.basename(name).splitext()[0]
-    
+
     if not found:
         theme = gtk.icon_theme_get_default()
         try:
@@ -58,13 +60,13 @@ def get_icon(name, size):
 
 # My widget: icon and label wrapped in a EventBox
 class DesktopToolWidget(gtk.EventBox):
-    
-    def __init__(self, label, icon_name, icon_size=48, 
-                 orientation = gtk.ORIENTATION_VERTICAL, border=4,
-                 wrap = 0):
-        
+
+    def __init__(self, label, icon_name, icon_size=48,
+                 orientation=gtk.ORIENTATION_VERTICAL, border=4,
+                 wrap=0):
+
         self.callback = None
-        
+
         gtk.EventBox.__init__(self)
         self.set_border_width(0)
 
@@ -85,11 +87,11 @@ class DesktopToolWidget(gtk.EventBox):
         # get_icon_info(icon_name, icon_size)
         pixbuf = get_icon(icon_name, icon_size)
         btn_image.set_from_pixbuf(pixbuf)
-            
+
         btn_image.show()
         btn_image.set_size_request(icon_size, icon_size)
         box.pack_start(btn_image, False, False, 5)
-        
+
         if label is not None:
             self.btn_label = gtk.Label()
             self.btn_label.set_use_markup(True)
@@ -100,13 +102,13 @@ class DesktopToolWidget(gtk.EventBox):
             if wrap:
                 label = textwrap.fill(label, wrap)
             self.btn_label.set_markup(label)
-                
+
             if orientation == gtk.ORIENTATION_VERTICAL:
                 self.btn_label.set_alignment(0.5, 0)
-                self.btn_label.set_justify(gtk.JUSTIFY_CENTER)            
-                #align = gtk.Alignment(1, 0, 0.5, 0.5)
-                #align.show()
-                #align.add(self.btn_label)
+                self.btn_label.set_justify(gtk.JUSTIFY_CENTER)
+                # align = gtk.Alignment(1, 0, 0.5, 0.5)
+                # align.show()
+                # align.add(self.btn_label)
                 box.pack_start(self.btn_label, False, False)
             else:
                 self.btn_label.set_alignment(0.2, 1)
@@ -120,20 +122,20 @@ class DesktopToolWidget(gtk.EventBox):
         # Manage selection
         self.connect("enter-notify-event", self.on_enter_notify)
         self.connect("leave-notify-event", self.on_leave_notify)
-        
+
         self.add(box)
         self.show_all()
 
     def on_button_press(self, w, event):
         print "on_button_press button 1 pressed: no callback"
-        if (event.type == gtk.gdk.BUTTON_PRESS  and  event.button == 1):
-            print w 
+        if event.type == gtk.gdk.BUTTON_PRESS and event.button == 1:
+            print w
             if not w.callback:
                 print "button 1 pressed: no callback"
             else:
                 print "*** call me ***"
                 w.callback(self.data)
-                
+
     def on_enter_notify(self, w, event):
         # Change background of the EventBox
         self.selected_bg = self.style.bg[gtk.STATE_SELECTED]
@@ -141,12 +143,12 @@ class DesktopToolWidget(gtk.EventBox):
         # Change foreground of the Label
         self.selected_fg = self.btn_label.style.fg[gtk.STATE_SELECTED]
         self.btn_label.modify_fg(gtk.STATE_NORMAL, self.selected_fg)
-   
+
     def on_leave_notify(self, w, event):
         # Restore defaults
         self.modify_bg(gtk.STATE_NORMAL, None)
         self.btn_label.modify_fg(gtk.STATE_NORMAL, None)
-   
+
     def set_callback(self, callback, w, data):
         # print "set_callback: data: " + data
         self.widget = w
@@ -158,12 +160,13 @@ if __name__ == "__main__":
 
     class Test:
         Value = 5
+
         def do_something(self, args):
             print "do_something: args: " + args + " value: %d" % self.Value
 
     window = gtk.Window()
-    window.set_title("DesktopToolWidget Test");
-    window.set_border_width(10);
+    window.set_title("DesktopToolWidget Test")
+    window.set_border_width(10)
 
     vbox = gtk.VBox()
     vbox.set_spacing(8)
@@ -177,7 +180,7 @@ if __name__ == "__main__":
     # Attach a callback
     test = Test()
     icon_button1.set_callback(test.do_something, icon_button1, "Hello")
-    
+
     # Button 2
     label = "<b>Hello</b>\nIconButton Horizontal"
     icon_button2 = DesktopToolWidget(label, 'synaptic', icon_size, gtk.ORIENTATION_HORIZONTAL)
@@ -186,7 +189,7 @@ if __name__ == "__main__":
 
     # Button 3
     label = "<b>Hello</b>This is a very long label a very long label a very long label"
-    icon_button3 = DesktopToolWidget(label, 'synaptic', icon_size, gtk.ORIENTATION_HORIZONTAL, wrap = 30)
+    icon_button3 = DesktopToolWidget(label, 'synaptic', icon_size, gtk.ORIENTATION_HORIZONTAL, wrap=30)
     icon_button3.set_size_request(200, 100)
     vbox.pack_start(icon_button3)
 
